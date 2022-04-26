@@ -1,0 +1,12 @@
+{
+    "php.executablePath": "C:/php/php.exe",
+    "terminal.integrated.fontSize": 14,
+    "phpcs.errorSeverity": 4,
+    "phpcs.standard" : "PSR12",
+    "phpcs.enable" : false,
+    "phpcs.showWarnings": true,
+    "phpcs.warningSeverity": 0,
+    "phpcs.executablePath": "./vendor/bin/phpcs",
+    "phpcs.ignorePatterns": [ "*/vendor/*"],
+    "phpcs.showSources": true
+}
