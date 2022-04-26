@@ -1,6 +1,6 @@
 <?php
 namespace ITEC\Presencial\DAW\HTMLElementClass;
-use ITEC\Presencial\DAW\DatosArrayElementos\DatosArrayElementos;
+use ITEC\Presencial\DAW\DatosArrayElementos\ArrayElementos;
 
 
 class HTMLElement {
@@ -33,9 +33,15 @@ class HTMLElement {
      * @param string $content
      */
     public function addContent(string $content){
-        $this->contenido[] = $content;
-        $this->vacio = false;
+        if(!$this->validateContentIsEmpty()){
+            $this->contenido[] = $content;
+            $this->vacio = false;
+        }
         
+    }
+
+    private function validateContentIsEmpty(){
+        return \in_array($this->NombreTag, ArrayElementos::$AttributesEmpty) ? true : false;
     }
 
     /**
@@ -44,7 +50,6 @@ class HTMLElement {
      * @param string $atributoContent
      */
     public function addAttribute( string $atributo, string $atributoContent){
-        //validar que pueda aceptar ese atributo validateAttributes()
         if($this->validateAttributes($atributo, $this->NombreTag)){
             $atributoFinal = $atributo .'="' . $atributoContent . '" ';
             $this->Atributos[] = $atributoFinal;
@@ -58,7 +63,11 @@ class HTMLElement {
      * @return bool
      */
     private function validateAttributes(string $atributo, string $NombreTag){
-        return in_array($NombreTag, DatosArrayElementos::$ATTRIBUTES[$atributo]) ? true : false;
+        
+        if( array_key_exists($atributo, ArrayElementos::$ATTRIBUTES)) 
+            return ArrayElementos::$ATTRIBUTES[$atributo] == "global" ||
+            is_array(\in_array($NombreTag, ArrayElementos::$ATTRIBUTES[$atributo])) ? true : false;
+                
     }
     
     /**
@@ -134,5 +143,6 @@ class HTMLElement {
 
 
 }
+
 
 ?>

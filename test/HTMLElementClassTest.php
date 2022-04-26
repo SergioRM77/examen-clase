@@ -1,6 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 use ITEC\Presencial\DAW\HTMLElementClass;
+use ITEC\Presencial\DAW\DatosArrayElementos;
 
 final class HTMLElementClassTest extends TestCase{
     function DPHTMLElementClassTest(){

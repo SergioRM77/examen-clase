@@ -1,6 +1,6 @@
 <?php
 namespace ITEC\Presencial\DAW\DatosArrayElementos;
-class DatosArrayElementos{
+class ArrayElementos{
        public static array $ATTRIBUTES = [
         "accept" => ["form", "input"],
         "accept-charset" => ["form"],
@@ -116,6 +116,25 @@ class DatosArrayElementos{
         "value" => ["button", "option", "input", "li", "meter", "progress", "param"],
         "width" => ["canvas", "embed", "iframe", "img", "input", "object", "video"],
         "wrap" => ["textarea"]
+    ];
+    public static array $AttributesEmpty = [
+        "area",
+        "base",
+        "br",
+        "col",
+        "colgroup",
+        "command",
+        "embed",
+        "hr",
+        "img",
+        "input",
+        "keygen",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr"
     ];
 }
 ?>
