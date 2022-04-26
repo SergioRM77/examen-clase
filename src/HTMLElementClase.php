@@ -1,14 +1,13 @@
 <?php
 namespace ITEC\Presencial\DAW\HTMLElementClass;
+use ITEC\Presencial\DAW\DatosArrayElementos\DatosArrayElementos;
 
-use PhpParser\Node\Stmt\TryCatch;
 
 class HTMLElement {
     private string $NombreTag;
     private array $Atributos;
     private array|null $contenido;
     private bool $vacio;
-    
     
     
        
@@ -24,6 +23,7 @@ class HTMLElement {
         $this->Atributos = $Atributos;
         $this->contenido = $contenido;
         $this->vacio = $vacio;
+        
     }
     
         
@@ -44,10 +44,23 @@ class HTMLElement {
      * @param string $atributoContent
      */
     public function addAttribute( string $atributo, string $atributoContent){
-        $atributoFinal = $atributo .'="' . $atributoContent . '" ';
-        $this->Atributos[] = $atributoFinal;
+        //validar que pueda aceptar ese atributo validateAttributes()
+        if($this->validateAttributes($atributo, $this->NombreTag)){
+            $atributoFinal = $atributo .'="' . $atributoContent . '" ';
+            $this->Atributos[] = $atributoFinal;
+        }
     }
 
+    /**
+     * comprueba si coinciden la etiqueta y el atributo
+     * @param string $atributo
+     * @param string $NombreTag
+     * @return bool
+     */
+    private function validateAttributes(string $atributo, string $NombreTag){
+        return in_array($NombreTag, DatosArrayElementos::$ATTRIBUTES[$atributo]) ? true : false;
+    }
+    
     /**
      * quitar un atributo a partir del nombre
      * @param string $atributo

@@ -7,14 +7,20 @@
     },
     "autoload":{
         "files": [
-            "src/htmlElement.php",
-            "src/HTMLElementClase.php"
-        ]
+            
+        ],
+        "psr-4":{
+            "PHPUnit\\":"vendor/phpunit/phpunit/src/",
+            "ITEC\\Presencial\\DAW\\":"src/"
+        }
     },
     "autoload-dev":{
         "files": [
-            "src/htmlElement.php",
-            "src/HTMLElementClase.php"
-        ]
+            
+        ],
+        "psr-4":{
+            "PHPUnit\\":"vendor/phpunit/phpunit/src/",
+            "ITEC\\Presencial\\DAW\\":"src/"
+        }
     }
 }
