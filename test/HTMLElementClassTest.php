@@ -35,10 +35,9 @@ final class HTMLElementClassTest extends TestCase{
         $classTag5->addAttribute("class", "divclass");
         $resultado5 = $classTag5->getHtml();
 
-        $classTag6 = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement("div",['id="divid"', ' class="divclass"'],[$resultado4,$resultado2,$resultado1],false);
-        //$classTag6->addAttribute("id", "divid");
-        //$classTag6->addAttribute("class", "divclass");
+        $classTag6 = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement("div",['id="divid"', 'class="divclass"'],[$resultado4,$resultado2,$resultado1],false);
         $resultado6 = $classTag6->getHtml();
+        
         return [
             "prueba hr" => [$etiqueta1,$resultado1],
             "prueba p" => [$etiqueta2,$resultado2],

@@ -51,7 +51,7 @@ class HTMLElement {
      */
     public function addAttribute( string $atributo, string $atributoContent){
         if($this->validateAttributes($atributo, $this->NombreTag)){
-            $atributoFinal = $atributo .'="' . $atributoContent . '" ';
+            $atributoFinal = $atributo .'="' . $atributoContent . '"';
             $this->Atributos[] = $atributoFinal;
         }
     }
@@ -107,10 +107,10 @@ class HTMLElement {
     }
 
     private function makeAttributeS(){
-        $resultado = " ";
+        $resultado = "";
         
          foreach ($this->Atributos as $key => $value) {
-            $resultado .= $value;
+            $resultado .= " " . $value;
         }
         return rtrim($resultado);
     
