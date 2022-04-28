@@ -1,7 +1,10 @@
 <?php
 namespace ITEC\Presencial\DAW\HTMLElementClass;
+
+use Exception;
 use ITEC\Presencial\DAW\DatosArrayElementos\ArrayElementos;
 
+use function PHPUnit\Framework\throwException;
 
 class HTMLElement {
     private string $NombreTag;
@@ -19,10 +22,19 @@ class HTMLElement {
     )
     {
         
-        $this->NombreTag = $NombreTag;
-        $this->Atributos = $Atributos;
-        $this->contenido = $contenido;
-        $this->vacio = $vacio;
+        try {
+            if($this->isValidTag($NombreTag)){
+                $this->NombreTag = $NombreTag;
+                $this->Atributos = $Atributos;
+                $this->contenido = $contenido;
+                $this->vacio = $vacio;
+            }else{
+                throw new Exception("Tag incorrecto");
+            }
+        } catch (Exception $error) {
+            return $error;
+        }
+        
         
     }
     
@@ -31,10 +43,10 @@ class HTMLElement {
      * @param string $NombreTag
      * @return bool
      */
-    public function isValidTag(string $tag){
-        foreach (ArrayElementos::$ATTRIBUTES as $key => $value) {
-            if(in_array($tag, ArrayElementos::$ATTRIBUTES[$key])) return true;
-        }
+    private function isValidTag(string $tag){
+        
+        if(array_search($tag, ArrayElementos::$ATTRIBUTES)) return true;
+        
     }
         
     /** 
@@ -102,7 +114,6 @@ class HTMLElement {
 
     /**
      * monta el contenido de la etiqueta en lenguaje html
-     * @param array $etiqueta
      * @return string
      */
     public function getHtml(){
