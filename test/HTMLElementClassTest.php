@@ -84,5 +84,15 @@ final class HTMLElementClassTest extends TestCase{
         $this->assertTrue( $classTag1->getEmpty());
         $this->assertFalse( $classTag4->getEmpty());
     }
+
+    public function testHTMLElement3(){
+        $classTag3 = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement("div",[],[],false);
+        $classTag3->addAttribute("id", "divid");
+        $classTag3->addAttribute("class", "divclass");
+        $classTag3->addContent("contenido");
+        $classTag3->removeAttribute('id="divid"');
+        $resultado3 = $classTag3->getHtml();
+        $this->assertEquals('<div class="divclass">contenido</div>',$resultado3);
+    }
 }
 ?>

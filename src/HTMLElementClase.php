@@ -26,7 +26,16 @@ class HTMLElement {
         
     }
     
-        
+    /**
+     * validar nombre de tag 
+     * @param string $NombreTag
+     * @return bool
+     */
+    public function isValidTag(string $tag){
+        foreach (ArrayElementos::$ATTRIBUTES as $key => $value) {
+            if(in_array($tag, ArrayElementos::$ATTRIBUTES[$key])) return true;
+        }
+    }
         
     /** 
      * añadir contenido a $etiqueta 
@@ -41,7 +50,7 @@ class HTMLElement {
     }
 
     private function validateContentIsEmpty(){
-        return \in_array($this->NombreTag, ArrayElementos::$AttributesEmpty) ? true : false;
+        return \in_array($this->NombreTag, ArrayElementos::$AttributesEmpty);
     }
 
     /**
@@ -66,18 +75,20 @@ class HTMLElement {
         
         if( array_key_exists($atributo, ArrayElementos::$ATTRIBUTES)) 
             return ArrayElementos::$ATTRIBUTES[$atributo] == "global" ||
-            is_array(\in_array($NombreTag, ArrayElementos::$ATTRIBUTES[$atributo])) ? true : false;
+            is_array(\in_array($NombreTag, ArrayElementos::$ATTRIBUTES[$atributo]));
                 
     }
     
     /**
-     * quitar un atributo a partir del nombre
+     * quitar un atributo a partir del atributo completo
      * @param string $atributo
      * 
      */
     public function removeAttribute( string $atributo){
-        if(isset($this->Atributos[$atributo]))
-        unset($this->Atributos[$atributo]);
+        
+            $clave = array_search($atributo, $this->Atributos);
+            if(is_numeric($clave)) unset($this->Atributos[$clave]);
+            
     }
 
     /**
