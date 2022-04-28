@@ -85,7 +85,7 @@ class HTMLElement {
      * 
      */
     public function removeAttribute( string $atributo){
-        
+            
             $clave = array_search($atributo, $this->Atributos);
             if(is_numeric($clave)) unset($this->Atributos[$clave]);
             
