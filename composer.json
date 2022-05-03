@@ -6,14 +6,20 @@
         "phpunit/phpunit": "^9"
     },
     "autoload":{
-        
+        "files": [
+            "src/DatosArrayElementos.php",
+            "src/HTMLElementClase.php"
+        ],
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
             "ITEC\\Presencial\\DAW\\":"src/"
         }
     },
     "autoload-dev":{
-        
+        "files": [
+            "src/DatosArrayElementos.php",
+            "src/HTMLElementClase.php"
+        ],
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
             "ITEC\\Presencial\\DAW\\":"src/"

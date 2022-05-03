@@ -1,15 +1,12 @@
 <?php
 namespace ITEC\Presencial\DAW\HTMLElementClass;
-
-use Exception;
 use ITEC\Presencial\DAW\DatosArrayElementos\ArrayElementos;
 
-use function PHPUnit\Framework\throwException;
 
 class HTMLElement {
-    private string $NombreTag;
-    private array $Atributos;
-    private array|null $contenido;
+    private false | string $NombreTag;
+    private false | array $Atributos;
+    private false | array|null $contenido;
     private bool $vacio;
     
     
@@ -22,20 +19,44 @@ class HTMLElement {
     )
     {
         
+            if($this->isValidTag($NombreTag) && $this->onlyString($NombreTag)){
+                if($this->onlyString($NombreTag)) $this->NombreTag = $NombreTag;
+                if($this->onlyString($Atributos)) $this->Atributos = $Atributos;
+                if($this->onlyString($contenido)) $this->contenido = $contenido;
+                 $this->vacio = $vacio;
+            } else{
+                throw new \Exception("Tag incorrecto");
+            }
+        /*
         try {
-            if($this->isValidTag($NombreTag)){
-                $this->NombreTag = $NombreTag;
-                $this->Atributos = $Atributos;
-                $this->contenido = $contenido;
-                $this->vacio = $vacio;
+            if($this->isValidTag($NombreTag) && $this->onlyString($NombreTag)){
+                if($this->onlyString($NombreTag)) $this->NombreTag = $NombreTag;
+                if($this->onlyString($Atributos)) $this->Atributos = $Atributos;
+                if($this->onlyString($contenido)) $this->contenido = $contenido;
+                 $this->vacio = $vacio;
             }else{
                 throw new Exception("Tag incorrecto");
             }
         } catch (Exception $error) {
             return $error;
         }
+        */
         
         
+    }
+
+   
+    private function onlyString(string | null | array $value){
+        if(\is_array($value)){
+            foreach ($value as $key => $val) {
+                if($value[$key]==null) return true;
+                if(!\is_string($val)) return false;
+            }
+            return true;
+        }
+        if($value == null) return true;
+        return \is_string($value);
+
     }
     
     /**
@@ -45,7 +66,12 @@ class HTMLElement {
      */
     private function isValidTag(string $tag){
         
-        if(array_search($tag, ArrayElementos::$ATTRIBUTES)) return true;
+        foreach (ArrayElementos::$ATTRIBUTES as $key => $value) {
+            if (is_array( ArrayElementos::$ATTRIBUTES[$key]) && 
+                in_array($tag, ArrayElementos::$ATTRIBUTES[$key])) return true;
+                
+            
+        }
         
     }
         
@@ -54,10 +80,11 @@ class HTMLElement {
      * @param string $content
      */
     public function addContent(string $content){
-        if(!$this->validateContentIsEmpty()){
-            $this->contenido[] = $content;
-            $this->vacio = false;
-        }
+        
+            if(!$this->validateContentIsEmpty()){
+                $this->contenido[] = $content;
+                $this->vacio = false;
+            }
         
     }
 
@@ -71,24 +98,32 @@ class HTMLElement {
      * @param string $atributoContent
      */
     public function addAttribute( string $atributo, string $atributoContent){
-        if($this->validateAttributes($atributo, $this->NombreTag)){
-            $atributoFinal = $atributo .'="' . $atributoContent . '"';
-            $this->Atributos[] = $atributoFinal;
-        }
+        
+            if($this->validateAttributes($atributo, $atributoContent)){
+                $atributoFinal = $atributo .'="' . $atributoContent . '"';
+                $this->Atributos[] = $atributoFinal;
+            }
+        
     }
 
     /**
      * comprueba si coinciden la etiqueta y el atributo
      * @param string $atributo
-     * @param string $NombreTag
+     * @param string $atributoContent
      * @return bool
      */
-    private function validateAttributes(string $atributo, string $NombreTag){
-        
+    private function validateAttributes(string $atributo, string $atributoContent){
+        if(array_key_exists($atributo, ArrayElementos::$ATTRIBUTE_VALUES)){
+            return (
+                \is_null(ArrayElementos::$ATTRIBUTE_VALUES[$atributo]) ||
+                \is_array(\in_array($atributoContent, ArrayElementos::$ATTRIBUTE_VALUES[$atributo]))
+            );
+        }
+        /*
         if( array_key_exists($atributo, ArrayElementos::$ATTRIBUTES)) 
             return ArrayElementos::$ATTRIBUTES[$atributo] == "global" ||
             is_array(\in_array($NombreTag, ArrayElementos::$ATTRIBUTES[$atributo]));
-                
+        */        
     }
     
     /**
