@@ -96,7 +96,7 @@ final class HTMLElementClassTest extends TestCase{
        $resultado3 = $classTag3->getHtml();
        $this->assertEquals('<div class="divclass">contenido</div>',$resultado3);
    }
-   /*
+   /* esto pendiente a entender Excepciones
 public function testHTMLElementFalse(){
        $falseprueba = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement("sfdghfsgn",[],[],false);
        $falsepruebaEsperado = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement(false,false,false,false);
