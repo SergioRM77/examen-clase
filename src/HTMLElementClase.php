@@ -25,7 +25,7 @@ class HTMLElement {
                 if($this->onlyString($contenido)) $this->contenido = $contenido;
                  $this->vacio = $vacio;
             } else{
-                throw new \Exception("Tag incorrecto");
+                throw new \Exception("Tag incorrecto " . $NombreTag);
             }
         /*
         try {
@@ -199,6 +199,69 @@ class HTMLElement {
     }
 
 
+    /**
+     * 
+     */
+    public static function create(
+        string $NombreTag,
+        array $Atributos ,
+        array | null $contenido ,
+        bool $vacio
+    ){
+        return new HTMLElement($NombreTag,$Atributos ,$contenido ,$vacio);
+    }
+
+    /**
+     * metodo estatico para devolver pagina con el elemento que se ingrerse
+     * 
+     * @return string
+     */
+    public static function createHtml5(){
+
+        $entrada = self::create("!DOCTYPE", ["html"], null, true);
+        $entrada = $entrada->getHtml();
+        $languaje = self::create("html", ['lang="en"'], null, true);
+        $languaje = $languaje->getHtml();
+        $meta1 = self::create("meta", ['charset="UTF-8"'], null, true);
+        $meta1 = $meta1->getHtml();
+        $meta2 = self::create("meta", [
+            'http-equiv="X-UA-Compatible"',
+            'content="IE=edge"'
+        ], null, true);
+        $meta2 = $meta2->getHtml();
+        $meta3 = self::create("meta", [
+            'name="viewport"',
+            'content="width=device-width, initial-scale=1.0"'
+        ], null, true);
+        $meta3 = $meta3->getHtml();
+        $title = self::create("title", [], ["titulo"], false);
+        $title = $title->getHtml();
+        $head = self::create("head", [], [
+            "\n", $meta1,"\n", $meta2,"\n", $meta3,"\n", $title,"\n"
+        ], false);
+        $head = $head->getHtml();
+        
+        $body = self::create("body", [],[
+                
+            ], false);
+        $body = $body->getHtml();
+        return $entrada . "\n" . $languaje . "\n" . $head . "\n" . $body;
+
+        /* return 
+            '<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <body>' .
+                $setEtiqueta .
+            '</body>
+            </html>';
+            */
+    }
 }
 
 

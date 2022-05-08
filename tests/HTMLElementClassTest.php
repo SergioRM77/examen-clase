@@ -95,14 +95,24 @@ final class HTMLElementClassTest extends TestCase{
        $classTag3->removeAttribute('id="divid"');
        $resultado3 = $classTag3->getHtml();
        $this->assertEquals('<div class="divclass">contenido</div>',$resultado3);
+      // echo ITEC\Presencial\DAW\HTMLElementClass\HTMLElement::createHtml5($resultado3);
    }
-   /* esto pendiente a entender Excepciones
-public function testHTMLElementFalse(){
-       $falseprueba = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement("sfdghfsgn",[],[],false);
-       $falsepruebaEsperado = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement(false,false,false,false);
-       print_r($falseprueba);
+   
+//public function testHTMLElementExeption(){
+    //$this->expectException(\Exception::class);
+       //$falseprueba = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement("sfdghfsgn",[],[],false);
+       //$this->expectExceptionMessage("Tag incorrecto");  
 
-   }*/
+  // }
+    public function testCreateHtml5(){
+       $classTag3 = new ITEC\Presencial\DAW\HTMLElementClass\HTMLElement("div",[],[],false);
+       $classTag3->addAttribute("id", "divid");
+       $classTag3->addAttribute("class", "divclass");
+       $classTag3->addContent("contenido");
+       $classTag3->removeAttribute('id="divid"');
+       $resultado3 = $classTag3->getHtml();
+       echo $classTag3->createHtml5();
+    }
    
 
 }
