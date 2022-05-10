@@ -1,6 +1,6 @@
 <?php
-namespace ITEC\DAW\listadopreguntas;
-use ITEC\DAW\pregunta;
+namespace ITEC\DAW\examen;
+use ITEC\DAW\examen\pregunta;
 
 class listadopreguntas{
     private array $preguntas;
