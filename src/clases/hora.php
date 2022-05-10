@@ -40,5 +40,6 @@ class hora{
         return $now->diff($this->datetimeObj)->format("G");
     }
 
+    
 }
 ?>
