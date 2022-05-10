@@ -5,11 +5,11 @@ class hora{
     private int $hora;
     private int $minutos;
     private int $segundos;
-    private DateTime $datetimeObj;
+    private \DateTime $datetimeObj;
 
     public function __construct(int $hora, int $minutos, int $segundos){
-        $this->datetimeObj = new DateTime();
-        $this->datetimeObj = setTime($hora,$minutos,$segundos);
+        $this->datetimeObj = new \DateTime();
+        $this->datetimeObj->setTime($hora,$minutos,$segundos);
         $this->hora = $hora;
         $this->minutos = $minutos;
         $this->segundos = $segundos;
@@ -33,13 +33,13 @@ class hora{
 
     /**
      * tiempo restante hasta fecha del objeto
-     * @return DateTime
+     * @return \DateTime
      */
     public function getTimeLeft() {
-        $now = new DateTime();
+        $now = new \DateTime();
         return $now->diff($this->datetimeObj)->format("G");
     }
 
-    
+
 }
 ?>
