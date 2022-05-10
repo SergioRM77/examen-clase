@@ -1,5 +1,5 @@
 <?php
-namespace ITEC\DAW\asignatura;
+namespace ITEC\DAW\examen;
 
 class asignatura{
     

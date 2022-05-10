@@ -1,5 +1,5 @@
 <?php
-namespace ITEC\DAW\pregunta;
+namespace ITEC\DAW\examen;
 
 class pregunta{
     private string $descripcion;
@@ -13,6 +13,9 @@ class pregunta{
         $this->descripcion = $descripcion;
         $this->puntuacionMax = $puntuacionMax;
 
+    }
+    public static function create(string $descripcion,int $puntuacionMax, int $id){
+        return new pregunta($descripcion, $puntuacionMax, $id);
     }
 
     public function addRespuesta(string $respuesta){

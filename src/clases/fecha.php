@@ -1,5 +1,5 @@
 <?php
-namespace ITEC\DAW\fecha;
+namespace ITEC\DAW\examen;
 
 class fecha{
     private int $dia;

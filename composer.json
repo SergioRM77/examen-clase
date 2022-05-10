@@ -6,21 +6,17 @@
         "phpunit/phpunit": "^9"
     },
     "autoload":{
-        "files": [
-            
-        ],
+        
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
-            "ITEC\\Presencial\\DAW\\":"src/"
+            "ITEC\\DAW\\":"src/clases/"
         }
     },
     "autoload-dev":{
-        "files": [
-            
-        ],
+        
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
-            "ITEC\\Presencial\\DAW\\":"src/"
+            "ITEC\\DAW\\":"src/clases/"
         }
     }
 }
