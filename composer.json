@@ -7,8 +7,7 @@
     },
     "autoload":{
         "files": [
-            "src/DatosArrayElementos.php",
-            "src/HTMLElementClase.php"
+            
         ],
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
@@ -17,8 +16,7 @@
     },
     "autoload-dev":{
         "files": [
-            "src/DatosArrayElementos.php",
-            "src/HTMLElementClase.php"
+            
         ],
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
