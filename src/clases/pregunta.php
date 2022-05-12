@@ -35,6 +35,10 @@ class pregunta{
         return $this;
     }
 
+    public function getDescripcion(){
+        return $this->descripcion;
+    }
+
     public function isValidPuntuacion(int $puntuacion):bool{
         return $puntuacion <= $this->puntuacionMax && $puntuacion >= 0;
     }

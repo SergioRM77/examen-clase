@@ -33,12 +33,26 @@ class listadopreguntas{
         return count($this->preguntas[]);
     }
     
+
+
     public function getPregunta(int $id){
         foreach ($this->preguntas as $pregunta) {
-            if($pregunta->id === $id) return $pregunta;
+            if($pregunta->isThisID($id)) return $pregunta;
         }
+        return null;
     }
         
+    /**
+     * buscar pregunta por palabra clave
+     * 
+     */
+    public function getPreguntaPorClave(string $cadena){
+        foreach ($this->preguntas as $pregunta) {
+            if(str_contains($pregunta->getDescripcion(), $cadena)) return $pregunta->getDescripcion();
+        }
+        return null;
+
+    }
     
 }
 ?>
