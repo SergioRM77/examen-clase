@@ -43,14 +43,15 @@ class listadopreguntas{
     }
         
     /**
-     * buscar pregunta por palabra clave
-     * 
+     * buscar pregunta por palabras clave
+     * @param string $cadena
+     * @return bool
      */
-    public function getPreguntaPorClave(string $cadena){
+    public function getPreguntaPorClave(string $cadena): bool{
         foreach ($this->preguntas as $pregunta) {
-            if(str_contains($pregunta->getDescripcion(), $cadena)) return $pregunta->getDescripcion();
+            if(str_contains($pregunta->getDescripcion(), $cadena))return true;
         }
-        return null;
+        return false;
 
     }
     
