@@ -21,17 +21,21 @@ class listadopreguntas{
     }
 
     public function addCreatePregunta(string $descripcion, int $puntuacionMax){
-        $this->preguntas[] = pregunta::create($descripcion, $puntuacionMax); 
+        $this->preguntas[] = pregunta::create($descripcion, $puntuacionMax, self::$lastid++); 
     }
 
     public function addPregunta(pregunta $pregunta){
         $this->preguntas[] = $pregunta;
     }
+   
 
-    public function getNumPreguntas():bool{
+    public function getNumPreguntas():int{
         return count($this->preguntas[]);
     }
     
+    public function getPregunta(){
+        
+    }
         
     
 }
