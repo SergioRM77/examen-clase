@@ -39,6 +39,7 @@ class pregunta{
         return $puntuacion <= $this->puntuacionMax && $puntuacion >= 0;
     }
 
+    
     public function isThisID(int $id):bool{
         return $id === $this->id;
     }
