@@ -33,8 +33,10 @@ class listadopreguntas{
         return count($this->preguntas[]);
     }
     
-    public function getPregunta(){
-        
+    public function getPregunta(int $id){
+        foreach ($this->preguntas as $pregunta) {
+            if($pregunta->id === $id) return $pregunta;
+        }
     }
         
     
