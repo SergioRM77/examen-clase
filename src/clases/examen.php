@@ -32,6 +32,32 @@ class examen{
     asignatura $asignatura, profesor $profesor){
         return new examen($fecha, $hora, $listapreguntas, $asignatura, $profesor);
     }
+
+    public function PuntuacionMax(int $puntuacionPregunta){
+        foreach ($this->listapreguntas as $clave => $pregunta) {
+            $pregunta->addPuntuacion($puntuacionPregunta);
+        }
+    }
+
+    public function getAsignatura(): asignatura{
+        return $this->asignatura;
+    }
+
+    public function getFecha(): fecha{
+        return $this->fecha;
+    }
+
+    public function getHora(): hora{
+        return $this->hora;
+    }
+
+    public function getListaPregunta(): listadopreguntas{
+        return $this->listapreguntas;
+    }
+
+    public function getProfesor(): profesor{
+        return $this->profesor;
+    }
 }
 
 ?>
