@@ -1,20 +1,23 @@
 <?php
 namespace ITEC\DAW\examen;
+use ITEC\DAW\examen\listadopreguntas;
+include_once "listadopreguntas.php";
 
 class pregunta{
     private string $descripcion;
     private string $respuesta;
     private int $puntuacionMax;
-    static int $id;
-    private int $puntuacion;
+    private int $id;
+    private int $puntuacion = 0;
 
-    public function __construct(string $descripcion,int $puntuacionMax, int $id){
+    private function __construct(string $descripcion,int $puntuacionMax, int $id){
         $this->id = $id;
         $this->descripcion = $descripcion;
         $this->puntuacionMax = $puntuacionMax;
+        $this->puntuacion = 0;
 
     }
-    public static function create(string $descripcion,int $puntuacionMax, int $id){
+    protected static function create(string $descripcion,int $puntuacionMax, $id){
         return new pregunta($descripcion, $puntuacionMax, $id);
     }
 
@@ -23,23 +26,27 @@ class pregunta{
     }
 
     public function addPuntuacion(int $puntuacion){
-        $this->puntuacion = $puntuacion;
+        $this->isValidPuntuacion($puntuacion) ? $this->puntuacion = $puntuacion : $this->puntuacion = 0;
     }
 
     public function __toString(){
-        return "Pregunta: " . $this->descripcion . "Respuesta: " . $this->respuesta .
-            "Puntuacion: " . $this->puntuacion;
+        return "Pregunta: " . $this->descripcion . " Respuesta: " . $this->respuesta .
+            " Puntuacion: " . $this->puntuacion . "/" . $this->puntuacionMax;
     }
 
     public function getPuntuacion():string{
-        return $this;
+        return $this->puntuacion;
+    }
+
+    public function getPuntuacionMax():string{
+        return $this->puntuacionMax;
     }
 
     public function getDescripcion(){
         return $this->descripcion;
     }
 
-    public function isValidPuntuacion(int $puntuacion):bool{
+    private function isValidPuntuacion(int $puntuacion):bool{
         return $puntuacion <= $this->puntuacionMax && $puntuacion >= 0;
     }
 

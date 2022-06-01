@@ -1,8 +1,10 @@
 <?php
 namespace ITEC\DAW\examen;
 use ITEC\DAW\examen\pregunta;
+include_once "pregunta.php";
 
-class listadopreguntas{
+
+class listadopreguntas extends pregunta{
     private array $preguntas;
     private static int $lastid = 0;
 
@@ -48,10 +50,17 @@ class listadopreguntas{
      */
     public function getPreguntaPorClave(string $cadena){
         foreach ($this->preguntas as $pregunta) {
-            if(str_contains($pregunta->getDescripcion(), $cadena)) return $pregunta->getDescripcion();
+            if(str_contains($pregunta->getDescripcion(), $cadena)) return $pregunta;
         }
         return null;
+    }
 
+    public static function getLastID(){
+        return self::$lastid;
+    }
+
+    public function getListadoPreguntas(){
+        return $this->preguntas;
     }
     
 }
