@@ -1,7 +1,7 @@
 <?php
 namespace ITEC\DAW\examen;
 use ITEC\DAW\examen\pregunta;
-include_once "pregunta.php";
+//include_once "pregunta.php";
 
 
 class listadopreguntas extends pregunta{
@@ -18,7 +18,7 @@ class listadopreguntas extends pregunta{
      *       ]
      * ]
      */
-    private function __construct(){
+    public function __construct(){
         $this->preguntas = [];
     }
 

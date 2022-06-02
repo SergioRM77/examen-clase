@@ -1,7 +1,7 @@
 <?php
 namespace ITEC\DAW\examen;
 use ITEC\DAW\examen\fecha;
-include_once "fecha.php";
+//include_once "fecha.php";
 
 
 class profesor{

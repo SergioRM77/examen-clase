@@ -1,7 +1,7 @@
 <?php
 namespace ITEC\DAW\examen;
 use ITEC\DAW\examen\listadopreguntas;
-include_once "listadopreguntas.php";
+//include_once "listadopreguntas.php";
 
 class pregunta{
     private string $descripcion;

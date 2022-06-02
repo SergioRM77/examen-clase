@@ -6,13 +6,14 @@ use ITEC\DAW\examen\listadopreguntas;
 use ITEC\DAW\examen\pregunta;
 use ITEC\DAW\examen\fecha;
 use ITEC\DAW\examen\hora;
+/*
 include_once "profesor.php";
 include_once "asignatura.php";
 include_once "listadopreguntas.php";
 include_once "pregunta.php";
 include_once "fecha.php";
 include_once "hora.php";
-
+*/
 class examen{
     private asignatura $asignatura;
     private profesor $profesor;
@@ -121,11 +122,13 @@ class examen{
 
 
 }
+/*
 $fecha = new fecha(12,1,2000);
 $profesor = profesor::create("alberto", $fecha);
 var_dump($profesor);
 $asignatura = asignatura::create("asignatura");
 var_dump($asignatura);
 $asignatura2 = asignatura::create("asignatura2");
-var_dump(asignatura::showAllAsignaturas());
+var_dump(GetListaPreguntas());
+*/
 ?>

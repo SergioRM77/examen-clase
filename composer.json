@@ -9,14 +9,14 @@
         
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
-            "ITEC\\DAW\\examen\\":"src/clases/"
+            "ITEC\\DAW\\examen\\":"src/clases"
         }
     },
     "autoload-dev":{
         
         "psr-4":{
             "PHPUnit\\":"vendor/phpunit/phpunit/src/",
-            "ITEC\\DAW\\examen\\":"src/clases/"
+            "ITEC\\DAW\\examen\\":"src/clases"
         }
     }
 }
