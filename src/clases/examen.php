@@ -6,14 +6,7 @@ use ITEC\DAW\examen\listadopreguntas;
 use ITEC\DAW\examen\pregunta;
 use ITEC\DAW\examen\fecha;
 use ITEC\DAW\examen\hora;
-/*
-include_once "profesor.php";
-include_once "asignatura.php";
-include_once "listadopreguntas.php";
-include_once "pregunta.php";
-include_once "fecha.php";
-include_once "hora.php";
-*/
+
 class examen{
     private asignatura $asignatura;
     private profesor $profesor;
@@ -65,7 +58,7 @@ class examen{
         return $this->asignatura->getIDasignatura();
     }
     public function MuestraTodasAsignaturas(){
-        asignatura::showAllAsignaturas();
+        return asignatura::showAllAsignaturas();
     }
 
     //fecha
@@ -101,7 +94,7 @@ class examen{
     }
 
     //ingresar respuesta
-    public function AddRespuesta(int $idpregunta, int $respuesta){
+    public function AddRespuesta(int $idpregunta, string $respuesta){
         $preguntaExamen = $this->GetPreguntaPorID($idpregunta);
         return $preguntaExamen->AddRespuesta($respuesta);
     }
@@ -113,22 +106,27 @@ class examen{
 
     public function puntuacionFinalExamen(){
         $preguntas = $this->GetListaPreguntas();
+        $totalPuntos = 0;
+        $puntosMaximos = 0;
         foreach ($preguntas as $key => $pregunta) {
-            $totalPuntos = $pregunta->getPuntuacion();
-            $puntosMaximos = $pregunta->getPuntuacionMax();
+            $totalPuntos += $pregunta->getPuntuacion();
+            $puntosMaximos += $pregunta->getPuntuacionMax();
         }
         return $totalPuntos . "/" . $puntosMaximos;
     }
 
+    public function showAllExamen(){
+        echo "Profesor: " . $this->NombreProfesor() . "\n";
+        echo "Asignatura: " . $this->NombreAsignatura() . "\n";
+        echo "Fecha examen: " . $this->fechaExamen() . " / Hora examen: " . $this->horaExamen() . "\n";
+        $preguntas = $this->GetListaPreguntas();
+        foreach ($preguntas as $key => $pregunta) {
+             echo $pregunta;
+        }
+        echo $this->puntuacionFinalExamen();
+
+    }
 
 }
-/*
-$fecha = new fecha(12,1,2000);
-$profesor = profesor::create("alberto", $fecha);
-var_dump($profesor);
-$asignatura = asignatura::create("asignatura");
-var_dump($asignatura);
-$asignatura2 = asignatura::create("asignatura2");
-var_dump(GetListaPreguntas());
-*/
+
 ?>

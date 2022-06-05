@@ -28,7 +28,11 @@ class fecha{
 
     public function getDateLeft() {
         $now = new \DateTime();
-        return $now->diff($this->validarFecha)->format("j");
+        return $now->diff($this->validarFecha)->days;
+       
+    }
+    public function objetoFecha(){
+        return $this->validarFecha;
     }
 }
 ?>

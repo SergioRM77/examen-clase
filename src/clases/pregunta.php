@@ -29,12 +29,13 @@ class pregunta{
         $this->isValidPuntuacion($puntuacion) ? $this->puntuacion = $puntuacion : $this->puntuacion = 0;
     }
 
-    public function __toString(){
-        return "Pregunta: " . $this->descripcion . " Respuesta: " . $this->respuesta .
-            " Puntuacion: " . $this->puntuacion . "/" . $this->puntuacionMax;
+    public function __toString(): string{
+        return "Pregunta: " . $this->descripcion . "\n Respuesta: " . $this->respuesta .
+            "\n Puntuacion: " . $this->puntuacion . "/" . $this->puntuacionMax . "\n";
     }
 
-    public function getPuntuacion():string{
+    
+    public function getPuntuacion():int{
         return $this->puntuacion;
     }
 
@@ -53,6 +54,10 @@ class pregunta{
     
     public function isThisID(int $id):bool{
         return $id === $this->id;
+    }
+
+    public function getRespuesta(){
+        return $this->respuesta;
     }
 }
 ?>

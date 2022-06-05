@@ -32,7 +32,7 @@ class listadopreguntas extends pregunta{
    
 
     public function getNumPreguntas():int{
-        return count($this->preguntas[]);
+        return count($this->preguntas);
     }
     
 
@@ -62,6 +62,7 @@ class listadopreguntas extends pregunta{
     public function getListadoPreguntas(){
         return $this->preguntas;
     }
+   
     
 }
 ?>

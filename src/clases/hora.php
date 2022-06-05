@@ -37,7 +37,7 @@ class hora{
      */
     public function getTimeLeft() {
         $now = new \DateTime();
-        return $now->diff($this->datetimeObj)->format("G");
+        return $now->diff($this->datetimeObj)->format("%H horas %i minutos");
     }
 
 

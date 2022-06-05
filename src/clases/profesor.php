@@ -1,7 +1,7 @@
 <?php
 namespace ITEC\DAW\examen;
 use ITEC\DAW\examen\fecha;
-//include_once "fecha.php";
+
 
 
 class profesor{
@@ -44,6 +44,5 @@ class profesor{
         return $this->id;
     }
 }
-//$fecha = new fecha(12,1,2000);
-//$profesor = profesor::create("alberto", $fecha);
+
 ?>
